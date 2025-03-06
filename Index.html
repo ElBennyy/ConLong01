@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convertidor de Unidades de Longitud</title>
+    <title>Conversor de Medidas de Longitud</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         body {
@@ -13,17 +13,24 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            background-image: url('imagenes/dark-cat_1.png');
+            background-size: cover;
+            background-position: center;
             margin: 0;
             text-align: center;
         }
         .container {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             max-width: 400px;
             width: 100%;
+        }
+        .logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
         }
         select, input, button {
             width: 100%;
@@ -31,12 +38,14 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 16px;
         }
         button {
             background-color: #28a745;
             color: white;
             border: none;
             cursor: pointer;
+            font-size: 16px;
         }
         button:hover {
             background-color: #218838;
@@ -51,8 +60,9 @@
 </head>
 <body>
     <div class="container">
+        <img src="imagenes/Logo_iMas.png" alt="Logotipo" class="logo">
         <h1>Conversor de Medidas de Longitud</h1>
-       <!--<p>Convierte fácilmente entre millas, yardas, pies, pulgadas, kilómetros y metros.</p>-->
+       <! -- <p>Convierte fácilmente entre millas, yardas, pies, pulgadas, kilómetros y metros.</p>  -->
         <input type="number" id="inputValue" placeholder="Ingrese un valor" />
         <select id="fromUnit">
             <option value="mile">Milla</option>
