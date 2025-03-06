@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertidor de Unidades de Longitud</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        select, input, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .clear-btn {
+            background-color: #dc3545;
+        }
+        .clear-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Conversor de Medidas de Longitud</h1>
+       <!--<p>Convierte fácilmente entre millas, yardas, pies, pulgadas, kilómetros y metros.</p>-->
+        <input type="number" id="inputValue" placeholder="Ingrese un valor" />
+        <select id="fromUnit">
+            <option value="mile">Milla</option>
+            <option value="yard">Yarda</option>
+            <option value="foot">Pie</option>
+            <option value="inch">Pulgada</option>
+            <option value="kilometer">Kilómetro</option>
+            <option value="meter">Metro</option>
+        </select>
+        <i class="fa-solid fa-arrow-down"></i>
+        <select id="toUnit">
+            <option value="mile">Milla</option>
+            <option value="yard">Yarda</option>
+            <option value="foot">Pie</option>
+            <option value="inch">Pulgada</option>
+            <option value="kilometer">Kilómetro</option>
+            <option value="meter">Metro</option>
+        </select>
+        <button onclick="convert()">Convertir</button>
+        <button class="clear-btn" onclick="clearFields()">Limpiar</button>
+        <h2 id="result"></h2>
+    </div>
+
+    <script>
+        // Factores de conversión a metros
+        const conversionFactors = {
+            mile: 1609.34,
+            yard: 0.9144,
+            foot: 0.3048,
+            inch: 0.0254,
+            kilometer: 1000,
+            meter: 1
+        };
+
+        function convert() {
+            let inputValue = parseFloat(document.getElementById("inputValue").value);
+            let fromUnit = document.getElementById("fromUnit").value;
+            let toUnit = document.getElementById("toUnit").value;
+            let resultField = document.getElementById("result");
+
+            if (isNaN(inputValue)) {
+                resultField.textContent = "Por favor, ingrese un número válido.";
+                return;
+            }
+
+            // Convertir a metros y luego a la unidad de destino
+            let valueInMeters = inputValue * conversionFactors[fromUnit];
+            let convertedValue = valueInMeters / conversionFactors[toUnit];
+            resultField.textContent = `${inputValue} ${fromUnit} equivale a ${convertedValue.toFixed(4)} ${toUnit}`;
+        }
+
+        function clearFields() {
+            document.getElementById("inputValue").value = "";
+            document.getElementById("result").textContent = "";
+        }
+    </script>
+</body>
+</html>
